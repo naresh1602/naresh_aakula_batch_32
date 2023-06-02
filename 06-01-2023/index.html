@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      let env = "dev";
+      let sendingAmount = 100;
+
+      if (env === "dev") {
+        sendingAmount += (sendingAmount * 10) / 100;
+      } else if (env === "test") {
+        sendingAmount += (sendingAmount * 20) / 100;
+      } else if (env === "stage") {
+        sendingAmount += (sendingAmount * 30) / 100;
+      } else if (env === "prod") {
+        sendingAmount += (sendingAmount * 5) / 100;
+      }
+
+      console.log("Sending Amount:", sendingAmount);
+    </script>
+  </head>
+  <body></body>
+</html>
