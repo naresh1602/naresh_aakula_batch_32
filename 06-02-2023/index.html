@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MY Hobbies</title>
+    <script>
+      var hobbies = ["Travelling", "Reading", "Listening to Music", "Blogging"];
+
+      function viewHobbies() {
+        var hobbiesList = document.getElementById("hobbies-list");
+
+        for (var i = 0; i < hobbies.length; i++) {
+          var listItem = document.createElement("li");
+          listItem.textContent = hobbies[i];
+          hobbiesList.appendChild(listItem);
+        }
+      }
+
+      function addHobby(newHobby) {
+        hobbies.push(newHobby);
+        var hobbiesList = document.getElementById("hobbies-list");
+        var listItem = document.createElement("li");
+        listItem.textContent = newHobby;
+        hobbiesList.appendChild(listItem);
+      }
+
+      function deleteHobby(hobbyToDelete) {
+        var index = hobbies.indexOf(hobbyToDelete);
+        if (index > -1) {
+          hobbies.splice(index, 1);
+          var hobbiesList = document.getElementById("hobbies-list");
+          hobbiesList.removeChild(hobbiesList.childNodes[index]);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>My Hobbies</h1>
+    <ul id="hobbies-list"></ul>
+    <button onclick="addHobby('Painting')">Add Hobby</button>
+    <button onclick="deleteHobby('Reading')">Delete Hobby</button>
+    <script>
+      viewHobbies();
+    </script>
+  </body>
+</html>
