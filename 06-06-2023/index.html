@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profile Form</title>
+    <style>
+      .form-container {
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #1e08ea;
+      }
+      .form-container label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      .form-container input[type="text"],
+      .form-container input[type="email"],
+      .form-container input[type="date"] {
+        width: 95%;
+        padding: 8px;
+        margin-bottom: 10px;
+      }
+      .form-container input[type="checkbox"] {
+        margin-bottom: 5px;
+      }
+      .form-container button {
+        padding: 10px 20px;
+        background-color: #c6c17e;
+        color: #e81e0c;
+        border: none;
+        cursor: pointer;
+      }
+      .submitted-values {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Profile Form</h2>
+      <form id="profileForm" onsubmit="submitForm(event)">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" required />
+
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" required />
+
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone" required />
+
+        <label>Hobbies</label>
+        <input type="checkbox" name="hobbies" value="reading" /> Reading<br />
+        <input type="checkbox" name="hobbies" value="traveling" />
+        Traveling<br />
+        <input type="checkbox" name="hobbies" value="sports" /> Sports<br />
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div class="submitted-values">
+      <h2>Submitted Values</h2>
+      <div id="submittedData"></div>
+    </div>
+
+    <script>
+      function submitForm(event) {
+        event.preventDefault();
+        const form = document.getElementById("profileForm");
+        const formData = new FormData(form);
+
+        let submittedValues = "<ul>";
+        for (let pair of formData.entries()) {
+          submittedValues += `<li>${pair[0]}: ${pair[1]}</li>`;
+        }
+        submittedValues += "</ul>";
+
+        document.getElementById("submittedData").innerHTML = submittedValues;
+        form.reset();
+      }
+    </script>
+  </body>
+</html>
